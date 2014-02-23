@@ -217,13 +217,13 @@ def set() {
 
 def api(method, args = [], success = {}) {
   def methods = [
-    "decoder_control": [uri: "/decoder_control.cgi${login()}&${args}", type: "post"],
-    "snapshot": [uri: "/snapshot.cgi${login()}&${args}", type: "post"],
-    "set_alarm": [uri: "/set_alarm.cgi${login()}&${args}", type: "post"],
-    "reboot": [uri: "/reboot.cgi${login()}&${args}", type: "post"],
-    "camera_control": [uri: "/camera_control.cgi${login()}&${args}", type: "post"],
-    "get_params": [uri: "/get_params.cgi${login()}", type: "get"],
-    "videostream": [uri: "/videostream.cgi${login()}", type: "get"]
+    "decoder_control": [uri: "/decoder_control.cgi${login()}&${args}", type: "POST"],
+    "snapshot": [uri: "/snapshot.cgi${login()}&${args}", type: "POST"],
+    "set_alarm": [uri: "/set_alarm.cgi${login()}&${args}", type: "POST"],
+    "reboot": [uri: "/reboot.cgi${login()}&${args}", type: "POST"],
+    "camera_control": [uri: "/camera_control.cgi${login()}&${args}", type: "POST"],
+    "get_params": [uri: "/get_params.cgi${login()}", type: "GET"],
+    "videostream": [uri: "/videostream.cgi${login()}", type: "GET"]
   ]
 
   def request = methods.getAt(method)
@@ -232,7 +232,7 @@ def api(method, args = [], success = {}) {
 }
 
 private doRequest(uri, type, success) {
-  new physicalgraph.device.HubAction("""${type.toUpperCase()} ${uri} HTTP/1.1\r\nHOST: ${ip}:80\r\n\r\n""", physicalgraph.device.Protocol.LAN)
+  new physicalgraph.device.HubAction("""${type} ${uri} HTTP/1.1\r\nHOST: ${ip}:80\r\n\r\n""", physicalgraph.device.Protocol.LAN)
 }
 
 private login() {
