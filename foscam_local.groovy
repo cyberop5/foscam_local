@@ -3,7 +3,7 @@
  *
  *  Author: danny@smartthings.com
  *  Author: brian@bevey.org
- *  Date: 10/2/13
+ *  Date: 2/23/14
  *
  *  Modified example Foscam device type to support dynamic input of credentials
  *  and enable / disable motion alarm to easily integrate into homemade
